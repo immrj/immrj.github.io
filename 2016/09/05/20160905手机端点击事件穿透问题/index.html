@@ -17,7 +17,7 @@ Zepto的tap通过兼听绑定在document上的touch事件来完成tap事件的�
 <meta property="og:description" content="之前在做项目的时候写了一个弹窗组件，其他都挺好的，但是在点击关闭的时候会出现事件穿透现象。大概找了一下资料也没发现是什么原因导致的，临时用了400毫秒的延迟暂时先解决了这个Bug。后来偶然看到了一篇文章，说是Zepto的tap事件是绑定到document上的，所以会导致这样的问题。
 
 Zepto的tap通过兼听绑定在document上的touch事件来完成tap事件的模拟的，tap事件是冒泡到do">
-<meta property="og:updated_time" content="2016-09-05T08:33:32.491Z">
+<meta property="og:updated_time" content="2016-09-05T08:42:28.499Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手机端点击事件穿透问题（Zepto Bug）">
 <meta name="twitter:description" content="之前在做项目的时候写了一个弹窗组件，其他都挺好的，但是在点击关闭的时候会出现事件穿透现象。大概找了一下资料也没发现是什么原因导致的，临时用了400毫秒的延迟暂时先解决了这个Bug。后来偶然看到了一篇文章，说是Zepto的tap事件是绑定到document上的，所以会导致这样的问题。
@@ -223,8 +223,10 @@ var _hmt = _hmt || [];
       
         <p>之前在做项目的时候写了一个弹窗组件，其他都挺好的，但是在点击关闭的时候会出现事件穿透现象。<br>大概找了一下资料也没发现是什么原因导致的，临时用了400毫秒的延迟暂时先解决了这个Bug。<br>后来偶然看到了一篇文章，说是Zepto的tap事件是绑定到document上的，所以会导致这样的问题。</p>
 <blockquote>
-<p>Zepto的tap通过兼听绑定在document上的touch事件来完成tap事件的模拟的，tap事件是冒泡到document上触发的。点击完成时的tap事件（touchstart/touchend）需要冒泡到document上才会触发，而在冒泡到document之前，用户的手接触屏幕（touchstart）和离开屏幕（touchend）是会触发click事件的。因为click事件有延迟触发（这就是为什么移动端不 用click而用tap的原因），所以在执行完tap事件之后，如果弹出来的组件马上就隐藏了，此时click事件还在延迟的300ms之中，当300ms到来的时候，click到的其实不是“关闭”而是隐藏在下方的元素，如果正下方的 元素绑定了click事件此时便会触发，如果没有绑定click事件的话就当没click，但是正下方的是input输入框（或者select选择框或者单选复选框），点击默认聚焦而弹出输入键盘，也就出现了上面的点击穿透现象。<br><a id="more"></a><br>具体解决方案如下：<br>1)  使用github上有一个叫做fastclick的库来替代Zepto的tap事件；</p>
+<p>Zepto的tap通过兼听绑定在document上的touch事件来完成tap事件的模拟的，tap事件是冒泡到document上触发的。点击完成时的tap事件（touchstart/touchend）需要冒泡到document上才会触发，而在冒泡到document之前，用户的手接触屏幕（touchstart）和离开屏幕（touchend）是会触发click事件的。因为click事件有延迟触发（这就是为什么移动端不 用click而用tap的原因），所以在执行完tap事件之后，如果弹出来的组件马上就隐藏了，此时click事件还在延迟的300ms之中，当300ms到来的时候，click到的其实不是“关闭”而是隐藏在下方的元素，如果正下方的 元素绑定了click事件此时便会触发，如果没有绑定click事件的话就当没click，但是正下方的是input输入框（或者select选择框或者单选复选框），点击默认聚焦而弹出输入键盘，也就出现了上面的点击穿透现象。</p>
 </blockquote>
+<a id="more"></a>
+<p>具体解决方案如下：<br>1)  使用github上有一个叫做fastclick的库来替代Zepto的tap事件；</p>
 <p>2)  监听touchend事件，并在事件中使用<code>preventDefault();</code>阻止冒泡；<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//JS代码</span></span><br><span class="line">$(<span class="string">".js-close"</span>).on(<span class="string">"touchend"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;  <span class="comment">//这里使用touchstart事件也可以</span></span><br><span class="line">    e.preventDefault();</span><br><span class="line">    ... <span class="comment">// 业务代码</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
 <p>3)  使用css3的<code>pointer-events=true,pointer-events=none</code>切换来实现；</p>
 <p>4)  延迟一定的时间来处理事件。经测试超过320毫秒就不会出现穿透，与jquery的动画(fadeIn()，fadeOut())等配合，感觉良好；<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(id).fadeIn(<span class="number">300</span>);</span><br></pre></td></tr></table></figure></p>
