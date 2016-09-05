@@ -117,7 +117,7 @@ var _hmt = _hmt || [];
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/TEST/" style="font-size: 10px;">TEST</a> <a href="/tags/active/" style="font-size: 10px;">active</a> <a href="/tags/小贴士/" style="font-size: 10px;">小贴士</a> <a href="/tags/心情/" style="font-size: 10px;">心情</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a>
+						<a href="/tags/Bug/" style="font-size: 10px;">Bug</a> <a href="/tags/TEST/" style="font-size: 10px;">TEST</a> <a href="/tags/Zepto/" style="font-size: 10px;">Zepto</a> <a href="/tags/active/" style="font-size: 10px;">active</a> <a href="/tags/小贴士/" style="font-size: 10px;">小贴士</a> <a href="/tags/心情/" style="font-size: 10px;">心情</a> <a href="/tags/手机端/" style="font-size: 10px;">手机端</a> <a href="/tags/点击穿透/" style="font-size: 10px;">点击穿透</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a>
 					</div>
 				</section>
 				
@@ -178,6 +178,68 @@ var _hmt = _hmt || [];
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-20160905手机端点击事件穿透问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/05/20160905手机端点击事件穿透问题/" class="article-date">
+  	<time datetime="2016-09-05T08:04:44.000Z" itemprop="datePublished">2016-09-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/05/20160905手机端点击事件穿透问题/">手机端点击事件穿透问题（Zepto Bug）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前在做项目的时候写了一个弹窗组件，其他都挺好的，但是在点击关闭的时候会出现事件穿透现象。<br>大概找了一下资料也没发现是什么原因导致的，临时用了400毫秒的延迟暂时先解决了这个Bug。<br>后来偶然看到了一篇文章，说是Zepto的tap事件是绑定到document上的，所以会导致这样的问题。</p>
+<blockquote>
+<p>Zepto的tap通过兼听绑定在document上的touch事件来完成tap事件的模拟的，tap事件是冒泡到document上触发的。点击完成时的tap事件（touchstart/touchend）需要冒泡到document上才会触发，而在冒泡到document之前，用户的手接触屏幕（touchstart）和离开屏幕（touchend）是会触发click事件的。因为click事件有延迟触发（这就是为什么移动端不 用click而用tap的原因），所以在执行完tap事件之后，如果弹出来的组件马上就隐藏了，此时click事件还在延迟的300ms之中，当300ms到来的时候，click到的其实不是“关闭”而是隐藏在下方的元素，如果正下方的 元素绑定了click事件此时便会触发，如果没有绑定click事件的话就当没click，但是正下方的是input输入框（或者select选择框或者单选复选框），点击默认聚焦而弹出输入键盘，也就出现了上面的点击穿透现象。<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bug/">Bug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Zepto/">Zepto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/手机端/">手机端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/点击穿透/">点击穿透</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/09/05/20160905手机端点击事件穿透问题/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-移动端active伪类无效的解决方法" class="article article-type-post" itemscope itemprop="blogPost">
   

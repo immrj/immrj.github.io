@@ -4,22 +4,25 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>移动端active伪类无效的解决方法 | Hello World !</title>
+  <title>手机端点击事件穿透问题（Zepto Bug） | Hello World !</title>
   <meta name="baidu-site-verification" content="daZ28qItaW" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="active伪类在PC端的作用为鼠标点击到放开时给元素添加样式用，呈现目标被点击的激活状态。写法也很简单1234/** 将a标签点击时的背景色改为红色 **/a:active&amp;#123;	background-color: red;&amp;#125;
-但是直接在移动端这么写会发现没有效果。查找一番，在mozilla开发社区找到了结果。[1] By default, Safari Mobile does">
+  <meta name="description" content="之前在做项目的时候写了一个弹窗组件，其他都挺好的，但是在点击关闭的时候会出现事件穿透现象。大概找了一下资料也没发现是什么原因导致的，临时用了400毫秒的延迟暂时先解决了这个Bug。后来偶然看到了一篇文章，说是Zepto的tap事件是绑定到document上的，所以会导致这样的问题。
+
+Zepto的tap通过兼听绑定在document上的touch事件来完成tap事件的模拟的，tap事件是冒泡到do">
 <meta property="og:type" content="article">
-<meta property="og:title" content="移动端active伪类无效的解决方法">
-<meta property="og:url" content="http://immrj.github.io/2016/06/23/移动端active伪类无效的解决方法/index.html">
+<meta property="og:title" content="手机端点击事件穿透问题（Zepto Bug）">
+<meta property="og:url" content="http://immrj.github.io/2016/09/05/20160905手机端点击事件穿透问题/index.html">
 <meta property="og:site_name" content="Hello World !">
-<meta property="og:description" content="active伪类在PC端的作用为鼠标点击到放开时给元素添加样式用，呈现目标被点击的激活状态。写法也很简单1234/** 将a标签点击时的背景色改为红色 **/a:active&amp;#123;	background-color: red;&amp;#125;
-但是直接在移动端这么写会发现没有效果。查找一番，在mozilla开发社区找到了结果。[1] By default, Safari Mobile does">
-<meta property="og:updated_time" content="2016-06-23T09:34:24.851Z">
+<meta property="og:description" content="之前在做项目的时候写了一个弹窗组件，其他都挺好的，但是在点击关闭的时候会出现事件穿透现象。大概找了一下资料也没发现是什么原因导致的，临时用了400毫秒的延迟暂时先解决了这个Bug。后来偶然看到了一篇文章，说是Zepto的tap事件是绑定到document上的，所以会导致这样的问题。
+
+Zepto的tap通过兼听绑定在document上的touch事件来完成tap事件的模拟的，tap事件是冒泡到do">
+<meta property="og:updated_time" content="2016-09-05T08:33:32.491Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="移动端active伪类无效的解决方法">
-<meta name="twitter:description" content="active伪类在PC端的作用为鼠标点击到放开时给元素添加样式用，呈现目标被点击的激活状态。写法也很简单1234/** 将a标签点击时的背景色改为红色 **/a:active&amp;#123;	background-color: red;&amp;#125;
-但是直接在移动端这么写会发现没有效果。查找一番，在mozilla开发社区找到了结果。[1] By default, Safari Mobile does">
+<meta name="twitter:title" content="手机端点击事件穿透问题（Zepto Bug）">
+<meta name="twitter:description" content="之前在做项目的时候写了一个弹窗组件，其他都挺好的，但是在点击关闭的时候会出现事件穿透现象。大概找了一下资料也没发现是什么原因导致的，临时用了400毫秒的延迟暂时先解决了这个Bug。后来偶然看到了一篇文章，说是Zepto的tap事件是绑定到document上的，所以会导致这样的问题。
+
+Zepto的tap通过兼听绑定在document上的touch事件来完成tap事件的模拟的，tap事件是冒泡到do">
   
     <link rel="alternative" href="/atom.xml" title="Hello World !" type="application/atom+xml">
   
@@ -181,11 +184,11 @@ var _hmt = _hmt || [];
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-移动端active伪类无效的解决方法" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-20160905手机端点击事件穿透问题" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/06/23/移动端active伪类无效的解决方法/" class="article-date">
-  	<time datetime="2016-06-23T09:10:50.000Z" itemprop="datePublished">2016-06-23</time>
+      <a href="/2016/09/05/20160905手机端点击事件穿透问题/" class="article-date">
+  	<time datetime="2016-09-05T08:04:44.000Z" itemprop="datePublished">2016-09-05</time>
 </a>
     </div>
   
@@ -198,7 +201,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      移动端active伪类无效的解决方法
+      手机端点击事件穿透问题（Zepto Bug）
     </h1>
   
 
@@ -207,7 +210,7 @@ var _hmt = _hmt || [];
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/active/">active</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端/">移动端</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bug/">Bug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Zepto/">Zepto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/手机端/">手机端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/点击穿透/">点击穿透</a></li></ul>
 	</div>
 
         
@@ -218,10 +221,14 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>active伪类在PC端的作用为鼠标点击到放开时给元素添加样式用，呈现目标被点击的激活状态。<br>写法也很简单<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 将a标签点击时的背景色改为红色 **/</span></span><br><span class="line"><span class="tag">a</span><span class="pseudo">:active</span><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">background-color</span>:<span class="value"> red</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>但是直接在移动端这么写会发现没有效果。查找一番，在mozilla开发社区找到了结果。<br><code>[1] By default, Safari Mobile does not use the :active state unless there is a touchstart event handler on the relevant element or on the &lt;body&gt;.</code><br>需要在按钮元素或body/html上绑定一个touchstart事件才能激活:active状态。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.addEventListener(<span class="string">'touchstart'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;&#125;); <span class="comment">//...空函数即可</span></span><br></pre></td></tr></table></figure></p>
-<p>将上述事件监听代码加上后，Safari Mobile上就可以看到按钮按下后的切换效果了。<br>参考文章：<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:active" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/CSS/:active</a></p>
-<p>原文：<a href="http://blog.csdn.net/freshlover/article/details/43735273" target="_blank" rel="external">http://blog.csdn.net/freshlover/article/details/43735273</a></p>
+        <p>之前在做项目的时候写了一个弹窗组件，其他都挺好的，但是在点击关闭的时候会出现事件穿透现象。<br>大概找了一下资料也没发现是什么原因导致的，临时用了400毫秒的延迟暂时先解决了这个Bug。<br>后来偶然看到了一篇文章，说是Zepto的tap事件是绑定到document上的，所以会导致这样的问题。</p>
+<blockquote>
+<p>Zepto的tap通过兼听绑定在document上的touch事件来完成tap事件的模拟的，tap事件是冒泡到document上触发的。点击完成时的tap事件（touchstart/touchend）需要冒泡到document上才会触发，而在冒泡到document之前，用户的手接触屏幕（touchstart）和离开屏幕（touchend）是会触发click事件的。因为click事件有延迟触发（这就是为什么移动端不 用click而用tap的原因），所以在执行完tap事件之后，如果弹出来的组件马上就隐藏了，此时click事件还在延迟的300ms之中，当300ms到来的时候，click到的其实不是“关闭”而是隐藏在下方的元素，如果正下方的 元素绑定了click事件此时便会触发，如果没有绑定click事件的话就当没click，但是正下方的是input输入框（或者select选择框或者单选复选框），点击默认聚焦而弹出输入键盘，也就出现了上面的点击穿透现象。<br><a id="more"></a><br>具体解决方案如下：<br>1)  使用github上有一个叫做fastclick的库来替代Zepto的tap事件；</p>
+</blockquote>
+<p>2)  监听touchend事件，并在事件中使用<code>preventDefault();</code>阻止冒泡；<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//JS代码</span></span><br><span class="line">$(<span class="string">".js-close"</span>).on(<span class="string">"touchend"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;  <span class="comment">//这里使用touchstart事件也可以</span></span><br><span class="line">    e.preventDefault();</span><br><span class="line">    ... <span class="comment">// 业务代码</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>3)  使用css3的<code>pointer-events=true,pointer-events=none</code>切换来实现；</p>
+<p>4)  延迟一定的时间来处理事件。经测试超过320毫秒就不会出现穿透，与jquery的动画(fadeIn()，fadeOut())等配合，感觉良好；<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(id).fadeIn(<span class="number">300</span>);</span><br></pre></td></tr></table></figure></p>
+<p>5)  如果还不奏效，终极解决方案是用click提代tap；<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置点击事件为_tap</span></span><br><span class="line">_tap = touchend <span class="keyword">in</span> <span class="built_in">document</span> ? <span class="string">"touchend"</span>:<span class="string">"click"</span>  </span><br><span class="line"><span class="comment">//这样在执行的过程中就可以直接调用</span></span><br><span class="line">div.on(_tap, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;...&#125;)</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -231,18 +238,9 @@ var _hmt = _hmt || [];
     
 <nav id="article-nav">
   
-    <a href="/2016/09/05/20160905手机端点击事件穿透问题/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          手机端点击事件穿透问题（Zepto Bug）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/04/06/hexo在索引页显示摘要和阅读全文按钮/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">hexo在索引页显示摘要和阅读全文按钮</div>
+    <a href="/2016/06/23/移动端active伪类无效的解决方法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">移动端active伪类无效的解决方法</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -277,7 +275,7 @@ var _hmt = _hmt || [];
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="移动端active伪类无效的解决方法" data-title="移动端active伪类无效的解决方法" data-url="http://immrj.github.io/2016/06/23/移动端active伪类无效的解决方法/"></div>
+	<div class="ds-thread" data-thread-key="20160905手机端点击事件穿透问题" data-title="手机端点击事件穿透问题（Zepto Bug）" data-url="http://immrj.github.io/2016/09/05/20160905手机端点击事件穿透问题/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
